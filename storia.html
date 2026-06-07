@@ -1,0 +1,49 @@
+<!-- ATTENZIONE PAGINA PRIVATA - PROPRIETA' DI SFRISO PAOLO -->
+
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Siamo - La Calle del Cuore</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Carichiamo Marked.js: la libreria dei professionisti per convertire il testo in HTML -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+
+<body>
+
+    <!-- NAVBAR (Uguale alla Home) -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">La Calle del Cuore</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="giornalino.html">Il Giornalino</a></li>
+                <li><a href="storia.html" class="active">La Storia</a></li>
+                <li><a href="statuto.html">Statuto</a></li>
+                <li><a href="contatti.html">Contatti</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- CONTENITORE DELLA STORIA -->
+    <main class="storia-wrapper">
+        <!-- Questo caricamento iniziale appare mentre JS scarica il testo -->
+        <div id="storia-render" class="storia-content">
+            <p>Caricamento della nostra storia in corso...</p>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>&copy; 2026 Associazione "La Calle del Cuore" - Chioggia. Tutti i diritti riservati.</p>
+    </footer>
+
+    <!-- Carichiamo il file JavaScript specifico per questa pagina -->
+    <script src="js/main.js" defer></script>
+</body>
+
+</html>

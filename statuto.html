@@ -1,0 +1,56 @@
+<!-- ATTENZIONE PAGINA PRIVATA - PROPRIETA' DI SFRISO PAOLO -->
+
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statuto Ufficiale - La Calle del Cuore</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">La Calle del Cuore</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="giornalino.html">Il Giornalino</a></li>
+                <li><a href="storia.html">La Storia</a></li>
+                <li><a href="statuto.html" class="active">Statuto</a></li>
+                <li><a href="contatti.html">Contatti</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="storia-wrapper">
+        <div id="statuto-render" class="storia-content">
+            <p>Stiamo recuperando il Registro Storico della nostra Calle...</p>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Associazione "La Calle del Cuore" - Chioggia. Tutti i diritti riservati.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const container = document.getElementById("statuto-render");
+
+            fetch('data/statuto.md')
+                .then(response => response.text())
+                .then(testoMarkdown => {
+                    container.innerHTML = marked.parse(testoMarkdown);
+                })
+                .catch(error => {
+                    container.innerHTML = "<p>Errore nel caricamento dello statuto.</p>";
+                });
+        });
+    </script>
+</body>
+
+</html>

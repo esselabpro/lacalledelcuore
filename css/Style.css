@@ -1,0 +1,423 @@
+/* ATTENZIONE PAGINA PRIVATA - PROPRIETA' DI SFRISO PAOLO */
+
+/* ==========================================================================
+   1. RESET GENERALE E VARIABILI (Per avere una base pulita su tutti i dispositivi)
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Evita che il padding rompa le larghezze degli elementi */
+}
+
+:root {
+    --colore-principale: #b33939;
+    /* Rosso mattone / Cuore */
+    --colore-secondario: #2c3e50;
+    /* Blu scuro elegante */
+    --colore-sfondo: #fdfbf7;
+    /* Bianco caldo (riposante per gli occhi) */
+    --colore-testo: #333333;
+    /* Grigio scuro (ottimo contrasto di lettura) */
+    --colore-card: #ffffff;
+    /* Bianco puro per i box */
+    --radius: 12px;
+    /* Angoli arrotondati moderni */
+    --transizione: all 0.3s ease;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--colore-sfondo);
+    color: var(--colore-testo);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   2. BARRA DI NAVIGAZIONE (Navbar)
+   ========================================================================== */
+.navbar {
+    background-color: var(--colore-principale);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    /* Rimane sopra a tutto durante lo scroll */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+}
+
+.logo {
+    color: white;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    transition: var(--transizione);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* ==========================================================================
+   3. COPERTINA (Hero Section)
+   ========================================================================== */
+.hero {
+    background: linear-gradient(135deg, rgba(179, 57, 57, 0.95), rgba(44, 62, 80, 0.9)),
+        url('../assets/immagini/sfondo-calle.jpg') center/cover no-repeat;
+    /* Se non c'è l'immagine, tiene il bellissimo gradiente */
+    color: white;
+    padding: 5rem 1.5rem;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+/* ==========================================================================
+   4. BOTTONI (Ottimizzati per il Touch: minimo 48px di altezza)
+   ========================================================================== */
+.btn-primary,
+.btn-secondary {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    transition: var(--transizione);
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+    background-color: white;
+    color: var(--colore-principale);
+}
+
+.btn-primary:hover {
+    background-color: var(--colore-sfondo);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: var(--colore-principale);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #962d2d;
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   5. CONTENITORE PRINCIPALE E SEZIONI
+   ========================================================================== */
+.home-container {
+    max-width: 1100px;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+    /* Impedisce al testo di toccare i bordi dello smartphone */
+}
+
+h2 {
+    color: var(--colore-secondario);
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.separator {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.1), transparent);
+    margin: 4rem 0;
+}
+
+/* --- CARD PROSSIMO EVENTO --- */
+.event-highlight-card {
+    background-color: var(--colore-card);
+    border-left: 6px solid var(--colore-principale);
+    border-radius: var(--radius);
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.event-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: #27ae60;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 50px;
+}
+
+.event-highlight-body h3 {
+    font-size: 1.6rem;
+    color: var(--colore-secondario);
+    margin-bottom: 0.5rem;
+    padding-right: 5rem;
+    /* Fa spazio al badge */
+}
+
+.event-meta {
+    font-weight: 600;
+    color: #7f8c8d;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.event-highlight-body p {
+    margin-bottom: 1.5rem;
+    color: #555;
+}
+
+/* --- GRIGLIA CARATTERISTICHE (Usa CSS Grid flessibile) --- */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    /* Crea colonne automatiche, minimo 280px */
+    gap: 2rem;
+}
+
+.feature-card {
+    background-color: var(--colore-card);
+    padding: 2.5rem 1.5rem;
+    border-radius: var(--radius);
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.02);
+    transition: var(--transizione);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+    color: var(--colore-secondario);
+    margin-bottom: 0.75rem;
+}
+
+.feature-card p {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   6. FOOTER
+   ========================================================================== */
+.footer {
+    background-color: var(--colore-secondario);
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    font-size: 0.9rem;
+    margin-top: 5rem;
+}
+
+.footer p:first-child {
+    color: white;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+/* ==========================================================================
+   7. MEDIA QUERIES PER SMARTPHONE (Il cuore del Responsive)
+   ========================================================================== */
+@media (max-width: 768px) {
+
+    /* Navbar si trasforma per il mobile */
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .nav-links {
+        width: 100%;
+        justify-content: center;
+        gap: 0.5rem;
+        gap: 1.5rem; /* Riduce leggermente lo spazio tra i tasti se necessario */
+    }
+
+    .nav-links a {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.6rem;
+    }
+
+    /* Ridimensionamento testi della copertina */
+    .hero {
+        padding: 3.5rem 1rem;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+        /* Titolo più piccolo per non andare fuori schermo */
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    /* Adattamento contenuti della Home */
+    .home-container {
+        margin: 1.5rem auto;
+    }
+
+    .event-highlight-card {
+        padding: 1.5rem;
+    }
+
+    .event-badge {
+        position: static;
+        /* Sposta il badge sopra il titolo sui piccoli schermi */
+        display: inline-block;
+        margin-bottom: 0.5rem;
+    }
+
+    .event-highlight-body h3 {
+        font-size: 1.3rem;
+        padding-right: 0;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+    }
+}
+
+/* ==========================================================================
+   8. STILI SPECIFICI PER LA PAGINA DELLA STORIA (GENERATI DA MARKDOWN)
+   ========================================================================== */
+.storia-wrapper {
+    max-width: 800px;
+    /* Larghezza perfetta per leggere senza muovere troppo gli occhi */
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+}
+
+.storia-content h1 {
+    color: var(--colore-principale);
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.storia-content h2 {
+    color: var(--colore-secondario);
+    font-size: 1.8rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid rgba(179, 57, 57, 0.1);
+    padding-bottom: 0.3rem;
+}
+
+.storia-content p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    text-align: justify;
+    /* Testo giustificato elegante */
+}
+
+.storia-content ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+    list-style-type: square;
+    /* Punti quadrati eleganti */
+}
+
+.storia-content li {
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+    /* Più spazio tra i membri così sul telefono si legge meglio */
+}
+
+.storia-content li strong {
+    color: var(--colore-principale);
+    /* Mette in evidenza i nomi di Maddalena, Michele e Michela */
+}
+
+/* Lo stile per la citazione finale (il tag blockquote generato dal simbolo >) */
+.storia-content blockquote {
+    background-color: rgba(179, 57, 57, 0.05);
+    border-left: 4px solid var(--colore-principale);
+    padding: 1.5rem;
+    margin: 3rem 0;
+    font-style: italic;
+    font-size: 1.2rem;
+    border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+/* Ottimizzazione mobile per la storia */
+@media (max-width: 768px) {
+    .storia-wrapper {
+        margin: 1.5rem auto;
+    }
+
+    .storia-content h1 {
+        font-size: 2rem;
+    }
+
+    .storia-content h2 {
+        font-size: 1.4rem;
+    }
+
+    .storia-content p,
+    .storia-content li {
+        font-size: 1rem;
+        /* Testo leggermente più piccolo per gli schermi dei telefoni */
+        text-align: left;
+        /* Su mobile la giustificazione può creare spazi brutti, meglio allineato a sinistra */
+    }
+}
