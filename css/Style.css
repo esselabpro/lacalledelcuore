@@ -287,19 +287,20 @@ h2 {
    7. MEDIA QUERIES PER SMARTPHONE (Il cuore del Responsive)
    ========================================================================== */
 @media (max-width: 768px) {
-
-    /* Navbar si trasforma per il mobile */
+    /* 1. Forza la larghezza del menu a stare dentro lo schermo */
     .nav-container {
         flex-direction: column;
-        gap: 1rem;
-        padding: 1rem;
+        padding: 0.5rem 2px; /* Aggiunge 10px di spazio a destra e sinistra */
+        width: 100%;
+        box-sizing: border-box; /* Fondamentale: impedisce al padding di allargare il menu */
     }
 
+    /* 2. Assicura che i link non vadano oltre */
     .nav-links {
         width: 100%;
         justify-content: center;
         gap: 0.5rem;
-        gap: 1.5rem; /* Riduce leggermente lo spazio tra i tasti se necessario */
+        flex-wrap: wrap; /* Manda a capo i tasti se non ci stanno */
     }
 
     .nav-links a {
