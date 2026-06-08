@@ -19,7 +19,7 @@
             <a href="index.html" class="logo">La Calle del Cuore</a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="giornalino.html" class="active">Il Giornalino</a></li>
+                <li><a href="assets/archivio/ultimogiornalino.pdf" target="_blank">Il Giornalino</a></li>
                 <li><a href="storia.html">La Storia</a></li>
                 <li><a href="statuto.html">Statuto</a></li>
                 <li><a href="contatti.html">Contatti</a></li>
@@ -30,16 +30,34 @@
     <main class="home-container" style="padding-top: 50px;">
         <h2>Archivio Storico dei Giornalini</h2>
         <p>Qui puoi trovare tutte le edizioni passate del nostro notiziario.</p>
-        
-        <ul class="archive-list">
-            <li>Giugno 2026: <a href="assets/archivio/giornalino_2026_06.pdf" target="_blank">Scarica il PDF</a></li>
+
+        <ul id="lista-archivio" class="archive-list">
         </ul>
     </main>
 
-    <!-- Copia qui il tuo footer uguale a quello dell'index -->
+    <script>
+        // Carica i dati dal file JSON che hai messo nella cartella data
+        fetch('data/archivio.json')
+            .then(response => response.json())
+            .then(data => {
+                const lista = document.getElementById('lista-archivio');
+                data.forEach(item => {
+                    const li = document.createElement('li');
+                    // Crea il link usando i dati dal JSON
+                    li.innerHTML = `${item.titolo}: <a href="assets/archivio/storico/${item.file}" target="_blank">Scarica il PDF</a>`;
+                    lista.appendChild(li);
+                });
+            })
+            .catch(error => {
+                console.error("Errore nel caricamento:", error);
+                document.getElementById('lista-archivio').innerHTML = "<li>Errore nel caricamento dei dati.</li>";
+            });
+    </script>
+   
     <footer class="footer">
         <p>&copy; 2026 Associazione "La Calle del Cuore" - Chioggia. Tutti i diritti riservati.</p>
     </footer>
 
 </body>
+
 </html>
