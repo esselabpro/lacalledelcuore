@@ -1,67 +1,101 @@
 <!-- ATTENZIONE PAGINA PRIVATA - PROPRIETA' DI SFRISO PAOLO -->
 
-<center>
-    <br>
-    <h1>Pagina in Manutenzione</h1>
-    <br>
+<!DOCTYPE html>
+<html lang="it">
 
-    <canvas id="canvas1" width="350" height="400">
-        Il browser in uso non supporta il canvas
-    </canvas>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contatti - La Calle del Cuore</title>
+    <link rel="stylesheet" href="css/Style.css">
+    <style>
+        /* Aggiungiamo un tocco di stile al canvas per centrarlo bene */
+        #canvas1 {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            display: block;
+            margin: 2rem auto;
+            /* Centrato orizzontalmente */
+            max-width: 100%;
+            /* Fondamentale per i cellulari */
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">La Calle del Cuore</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="giornalino.html">Il Giornalino</a></li>
+                <li><a href="storia.html">La Storia</a></li>
+                <li><a href="statuto.html">Statuto</a></li>
+                <li><a href="contatti.html" class="active">Contatti</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="home-container">
+        <h2>Contattaci</h2>
+
+        <div class="event-highlight-card" style="text-align: center; margin-bottom: 2rem;">
+            <p>Siamo felici di ricevere i vostri consigli, suggerimenti o richieste di informazioni.</p>
+            <h3 style="margin: 1.5rem 0;">
+                <a href="mailto:lacalledelcuore@gmail.com"
+                    style="text-decoration: none; color: var(--colore-principale); font-weight: bold;">
+                    lacalledelcuore@gmail.com
+                </a>
+            </h3>
+        </div>
+
+        <canvas id="canvas1" width="350" height="400">
+            Il browser in uso non supporta il canvas
+        </canvas>
+    </main>
+
+    <footer class="footer">
+        <p>La Calle del Cuore</p>
+        <p>&copy; 2026 - Tutti i diritti riservati</p>
+    </footer>
 
     <script>
-        // Ottenere il canvas e il contesto
         let mioCanvas = document.getElementById("canvas1");
         let context = mioCanvas.getContext("2d");
 
-        // Posizione iniziale e velocità separate per asse
         let x = 150;
         let y = 100;
         let raggio = 40;
-
-        // Gestendo le velocità separatamente hai il controllo totale del movimento diagonale
         let velocitaX = 4;
         let velocitaY = 3;
-
-        // Memorizziamo il tempo dell'ultimo fotogramma per il calcolo anti-risparmio energetico
         let ultimoTempo = performance.now();
 
         function aggiorna(tempoAttuale) {
-            // Cancellare il canvas
             context.clearRect(0, 0, mioCanvas.width, mioCanvas.height);
-
-            // Calcoliamo quanti millisecondi sono passati dall'ultimo fotogramma rispetto a uno standard di 60Hz (16.66ms)
             let deltaTime = (tempoAttuale - ultimoTempo) / 16.66;
             ultimoTempo = tempoAttuale;
 
-            // Se il deltaTime è troppo alto (es. cambi scheda del browser), lo blocchiamo per evitare balzi giganti della pallina
             if (deltaTime > 4) deltaTime = 4;
 
-            // Disegno del cerchio
             context.beginPath();
-            context.fillStyle = "rgba(0, 250, 0, 0.6)";  // Verde trasparente
+            context.fillStyle = "rgba(0, 250, 0, 0.6)";
             context.arc(x, y, raggio, 0, Math.PI * 2);
             context.fill();
             context.stroke();
             context.closePath();
 
-            // MOLTIPLICHIAMO LA VELOCITÀ PER IL DELTATIME: movimento costante su ogni telefono!
             x += velocitaX * deltaTime;
             y += velocitaY * deltaTime;
 
-            // --- GESTIONE RIMBALZI ---
-            if (x + raggio >= mioCanvas.width || x - raggio <= 0) {
-                velocitaX = -velocitaX;
-            }
-            if (y + raggio >= mioCanvas.height || y - raggio <= 0) {
-                velocitaY = -velocitaY;
-            }
+            if (x + raggio >= mioCanvas.width || x - raggio <= 0) velocitaX = -velocitaX;
+            if (y + raggio >= mioCanvas.height || y - raggio <= 0) velocitaY = -velocitaY;
 
-            // Passiamo il tempo attuale in automatico al prossimo ciclo
             requestAnimationFrame(aggiorna);
         }
 
-        // Avviare l'animazione passando il tempo iniziale
         requestAnimationFrame(aggiorna);
     </script>
-</center>
+</body>
+
+</html>
