@@ -1,4 +1,1 @@
-[
-    {"titolo": "Giugno 2026", "file": "giornalino_2026_06.pdf"},
-    {"titolo": "Luglio 2026", "file": "giornalino_2026_07.pdf"}
-]
+
