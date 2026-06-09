@@ -1,4 +1,4 @@
-// ATTENZIONE PROPRIETA' PRIVATA SFRISO PAOLO //
+// ATTENZIONE PROPRIETA' LA CALLE DEL CUORE //
 
 document.addEventListener("DOMContentLoaded", () => {
     // Controlliamo se siamo nella pagina della storia (se esiste l'elemento di render)
