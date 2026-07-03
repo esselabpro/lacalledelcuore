@@ -1,7 +1,7 @@
 // ATTENZIONE PROPRIETA' LA CALLE DEL CUORE //
 
 document.addEventListener("DOMContentLoaded", () => {
-    // Controlliamo se siamo nella pagina della storia (se esiste l'elemento di render)
+    // Controllo se siamo nella pagina della storia (se esiste l'elemento di render)
     const storiaContainer = document.getElementById("storia-render");
     
     if (storiaContainer) {
@@ -14,8 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 return response.text();
             })
             .then(testoMarkdown => {
-                // 2. Usiamo la libreria Marked per trasformare il testo in HTML puro
-                // 3. Lo stampiamo dentro la pagina
+                // 2. Uso la libreria Marked per trasformare il testo in HTML puro
+                // 3. Stampo dentro la pagina
                 storiaContainer.innerHTML = marked.parse(testoMarkdown);
             })
             .catch(error => {
