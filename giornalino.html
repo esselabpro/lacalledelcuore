@@ -6,13 +6,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archivio Giornalino - La Calle del Cuore</title>
+    <!-- Titolo ottimizzato -->
+    <title>Archivio Storico dei Giornalini | La Calle del Cuore Chioggia</title>
+
+    <!-- Descrizione specifica -->
+    <meta name="description"
+        content="Consulta l'archivio storico dei notiziari de La Calle del Cuore a Chioggia. Scarica le edizioni passate del nostro giornalino di quartiere.">
+
+    <!-- Canonical Tag -->
+    <link rel="canonical" href="https://esselabpro.github.io/lacalledelcuore/index.html">
     <link rel="stylesheet" href="css/Style.css">
 </head>
 
 <body>
 
-    <!-- barra di navigazione uguale a quella dell'index -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">La Calle del Cuore</a>
@@ -35,15 +42,15 @@
     </main>
 
     <script>
-        // Carica i dati dal file JSON è nella cartella data
-        fetch('data/archivio.json')
+        // Carica i dati dal file JSON con protezione anti-cache
+        fetch('data/archivio.json?v=' + new Date().getTime())
             .then(response => response.json())
             .then(data => {
                 const lista = document.getElementById('lista-archivio');
                 data.forEach(item => {
                     const li = document.createElement('li');
-                    // Crea il link usando i dati dal JSON
-                    li.innerHTML = `${item.titolo}: <a href="assets/archivio/storico/${item.file}" target="_blank">Scarica il PDF</a>`;
+                    const pdfConAntiCache = `assets/archivio/storico/${item.file}?v=${new Date().getTime()}`;
+                    li.innerHTML = `${item.titolo}: <a href="${pdfConAntiCache}" target="_blank">Scarica il PDF</a>`;
                     lista.appendChild(li);
                 });
             })
@@ -52,9 +59,11 @@
                 document.getElementById('lista-archivio').innerHTML = "<li>Errore nel caricamento dei dati.</li>";
             });
     </script>
-   
+
+    <!-- Footer aggiornato con identità locale -->
     <footer class="footer">
-        <p>&copy; 2026 Associazione "La Calle del Cuore" - Chioggia. Tutti i diritti riservati.</p>
+        <p>&copy; 2026 Associazione "La Calle del Cuore" - Chioggia (VE).</p>
+        <p>Associazione Culturale e No-Profit nella storica Calle del Cuore di Chioggia.</p>
     </footer>
 
 </body>
