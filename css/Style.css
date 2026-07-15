@@ -1,4 +1,4 @@
-/* ATTENZIONE - PROPRIETA' LA CALLE DEL CUORE */
+/* ATTENZIONE PAGINA PRIVATA - PROPRIETA' DI SFRISO PAOLO */
 
 /* ==========================================================================
    1. RESET GENERALE E VARIABILI (Per avere una base pulita su tutti i dispositivi)
@@ -32,7 +32,7 @@ body {
     color: var(--colore-testo);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden; 
+    overflow-x: hidden;
     width: 100%;
 }
 
@@ -67,8 +67,10 @@ body {
 
 /* Regola aggiornata per il logo */
 .hero-content img {
-    max-width: 250px;   /* Imposta una dimensione massima fissa per il desktop */
-    width: 100%;        /* Sui cellulari si adatterà allo schermo, ma senza superare 250px */
+    max-width: 250px;
+    /* Imposta una dimensione massima fissa per il desktop */
+    width: 100%;
+    /* Sui cellulari si adatterà allo schermo, ma senza superare 250px */
     height: auto;
     display: block;
     margin: 0 auto 20px auto;
@@ -287,12 +289,15 @@ h2 {
    7. MEDIA QUERIES PER SMARTPHONE (Il cuore del Responsive)
    ========================================================================== */
 @media (max-width: 768px) {
+
     /* 1. Forza la larghezza del menu a stare dentro lo schermo */
     .nav-container {
         flex-direction: column;
-        padding: 0.5rem 2px; /* Aggiunge 10px di spazio a destra e sinistra */
+        padding: 0.5rem 2px;
+        /* Aggiunge 10px di spazio a destra e sinistra */
         width: 100%;
-        box-sizing: border-box; /* Fondamentale: impedisce al padding di allargare il menu */
+        box-sizing: border-box;
+        /* Fondamentale: impedisce al padding di allargare il menu */
     }
 
     /* 2. Assicura che i link non vadano oltre */
@@ -300,7 +305,8 @@ h2 {
         width: 100%;
         justify-content: center;
         gap: 0.5rem;
-        flex-wrap: wrap; /* Manda a capo i tasti se non ci stanno */
+        flex-wrap: wrap;
+        /* Manda a capo i tasti se non ci stanno */
     }
 
     .nav-links a {
@@ -431,4 +437,13 @@ h2 {
         text-align: left;
         /* Su mobile la giustificazione può creare spazi brutti, meglio allineato a sinistra */
     }
+}
+
+/* Aggiungo un tocco di stile al canvas per centrarlo per bene */
+#canvas1 {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    display: block;
+    margin: 2rem auto;
+    max-width: 100%;
 }
