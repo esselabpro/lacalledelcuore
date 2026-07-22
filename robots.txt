@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://esselabpro.github.io/lacalledelcuore/sitemap.xml
