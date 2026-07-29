@@ -25,7 +25,7 @@
             <a href="index.html" class="logo">La Calle del Cuore</a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-				<li><a href="javascript:void(0);" onclick="caricaUltimaEdizione()">Il Giornalino</a></li>
+                <li><a href="assets/archivio/stirico/02_giornalino_2026_07.pdf" target="_blank">Il Giornalino</a></li>
                 <li><a href="storia.html">La Storia</a></li>
                 <li><a href="statuto.html">Statuto</a></li>
                 <li><a href="contatti.html">Contatti</a></li>
@@ -40,14 +40,7 @@
         </ul>
     </main>
 
-	<script>
-        // Funzione creata per l'anti-cache
-        function caricaUltimaEdizione() {
-            const timestamp = new Date().getTime();
-            const urlAntiCache = `assets/archivio/ultimogiornalino.pdf?v=${timestamp}`;
-            window.open(urlAntiCache, '_blank');
-        }
-
+    <script>
         // Carica i dati dal file JSON con protezione anti-cache
         fetch('data/archivio.json?v=' + new Date().getTime())
             .then(response => response.json())
