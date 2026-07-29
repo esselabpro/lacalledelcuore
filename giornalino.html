@@ -6,6 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <!-- Titolo ottimizzato -->
     <title>Archivio Storico dei Giornalini | La Calle del Cuore Chioggia</title>
 
@@ -14,19 +15,17 @@
         content="Consulta l'archivio storico dei notiziari de La Calle del Cuore a Chioggia. Scarica le edizioni passate del nostro giornalino di quartiere.">
 
     <!-- Canonical Tag -->
-    <link rel="canonical" href="https://esselabpro.github.io/lacalledelcuore/giornalino.html">
+    <link rel="canonical" href="https://esselabpro.github.io/lacalledelcuore/index.html">
     <link rel="stylesheet" href="css/Style.css">
 </head>
 
 <body>
-
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">La Calle del Cuore</a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <!-- AGGIUNTO L'ID QUI SOTTO -->
-                <li><a href="assets/archivio/ultimogiornalino.pdf" target="_blank" id="link-ultimo-giornalino">Il Giornalino</a></li>
+                <li><a href="assets/archivio/ultimogiornalino.pdf" target="_blank">Il Giornalino</a></li>
                 <li><a href="storia.html">La Storia</a></li>
                 <li><a href="statuto.html">Statuto</a></li>
                 <li><a href="contatti.html">Contatti</a></li>
@@ -37,27 +36,20 @@
     <main class="home-container" style="padding-top: 50px;">
         <h2>Archivio Storico dei Giornalini</h2>
         <p>Qui puoi trovare tutte le edizioni passate del nostro notiziario.</p>
-
         <ul id="lista-archivio" class="archive-list">
         </ul>
     </main>
 
     <script>
-        // Aggiorna subito il link dell'ultimo giornalino con la protezione anti-cache
-        const timestamp = new Date().getTime();
-        document.getElementById('link-ultimo-giornalino').href = `assets/archivio/ultimogiornalino.pdf?v=${timestamp}`;
-
         // Carica i dati dal file JSON con protezione anti-cache
-        fetch('data/archivio.json?v=' + timestamp)
+        fetch('data/archivio.json?v=' + new Date().getTime())
             .then(response => response.json())
             .then(data => {
                 const lista = document.getElementById('lista-archivio');
                 data.forEach(item => {
                     const li = document.createElement('li');
-                    const pdfConAntiCache = `assets/archivio/storico/${item.file}?v=${timestamp}`;
-                    li.innerHTML = `${item.titolo}: <a href="${pdfConAntiCard ? '' : pdfConAntiCache}" target="_blank">Scarica il PDF</a>`;
-                    // Nota: mantieni la riga originale pulita per il caricamento degli storici:
-                    // li.innerHTML = `${item.titolo}: <a href="${pdfConAntiCache}" target="_blank">Scarica il PDF</a>`;
+                    const pdfConAntiCache = `assets/archivio/storico/${item.file}?v=${new Date().getTime()}`;
+                    li.innerHTML = `${item.titolo}: <a href="${pdfConAntiCache}" target="_blank">Scarica il PDF</a>`;
                     lista.appendChild(li);
                 });
             })
@@ -72,7 +64,6 @@
         <p>&copy; 2026 Associazione "La Calle del Cuore" - Chioggia (VE).</p>
         <p>Associazione Culturale e No-Profit nella storica Calle del Cuore di Chioggia.</p>
     </footer>
-
 </body>
 
 </html>
