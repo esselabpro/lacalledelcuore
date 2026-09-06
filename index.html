@@ -23,7 +23,7 @@
             <a href="index.html" class="logo">La Calle del Cuore</a>
             <ul class="nav-links">
                 <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="assets/archivio/ultimo_giornalino_2026_08.pdf" target="_blank">Il Giornalino</a></li>
+                <li><a href="javascript:void(0);" onclick="apriGiornalinoAttuale()">Il Giornalino</a></li>
                 <li><a href="storia.html">La Storia</a></li>
                 <li><a href="statuto.html">Statuto</a></li>
                 <li><a href="contatti.html">Contatti</a></li>
@@ -91,7 +91,12 @@
         <p>Associazione No-Profit nella storica Calle del Cuore di Chioggia.</p>
     </footer>
 
+    <!-- Script principale per azioni globali-->
     <script src="js/main.js" defer></script>
+
+    <!-- Script specifico per la chiamata del giornalino del mese corrente -->
+    <script src="js/ultimoGiornalino.js" defer></script>
+
 </body>
 
 </html>
