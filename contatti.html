@@ -26,7 +26,7 @@
             <a href="index.html" class="logo">La Calle del Cuore</a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="assets/archivio/ultimo_giornalino_2026_08.pdf?v26-07-30-" target="_blank">Il Giornalino</a></li>
+                <li><a href="javascript:void(0);" onclick="apriGiornalinoAttuale()">Il Giornalino</a></li>
                 <li><a href="storia.html">La Storia</a></li>
                 <li><a href="statuto.html">Statuto</a></li>
                 <li><a href="contatti.html" class="active">Contatti</a></li>
@@ -58,42 +58,12 @@
         <p>Associazione Culturale e No-Profit nella storica Calle del Cuore di Chioggia.</p>
     </footer>
 
-    <script>
-        let mioCanvas = document.getElementById("canvas1");
-        let context = mioCanvas.getContext("2d");
+    <!-- Script specifico per la visualizzazione della pallina Canvas -->
+    <script src="js/pallinaCanvas.js" defer></script>
 
-        let x = 150;
-        let y = 100;
-        let raggio = 40;
-        let velocitaX = 4;
-        let velocitaY = 3;
-        let ultimoTempo = performance.now();
-
-        function aggiorna(tempoAttuale) {
-            context.clearRect(0, 0, mioCanvas.width, mioCanvas.height);
-            let deltaTime = (tempoAttuale - ultimoTempo) / 16.66;
-            ultimoTempo = tempoAttuale;
-
-            if (deltaTime > 4) deltaTime = 4;
-
-            context.beginPath();
-            context.fillStyle = "rgba(0, 250, 0, 0.6)";
-            context.arc(x, y, raggio, 0, Math.PI * 2);
-            context.fill();
-            context.stroke();
-            context.closePath();
-
-            x += velocitaX * deltaTime;
-            y += velocitaY * deltaTime;
-
-            if (x + raggio >= mioCanvas.width || x - raggio <= 0) velocitaX = -velocitaX;
-            if (y + raggio >= mioCanvas.height || y - raggio <= 0) velocitaY = -velocitaY;
-
-            requestAnimationFrame(aggiorna);
-        }
-
-        requestAnimationFrame(aggiorna);
-    </script>
+    <!-- Script specifico per la chiamata del giornalino del mese corrente -->
+    <script src="js/ultimoGiornalino.js" defer></script>
+    
 </body>
 
 </html>
